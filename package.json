@@ -18,6 +18,7 @@
   "homepage": "https://github.com/isoppp/delete-slack-files#readme",
   "dependencies": {
     "request": "^2.81.0",
-    "request-promise": "^4.2.1"
+    "request-promise": "^4.2.1",
+    "yargs": "^8.0.1"
   }
 }
