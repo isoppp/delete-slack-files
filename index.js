@@ -25,25 +25,28 @@ const fileListAPIoptions = {
 requestPromise(fileListAPIoptions)
   .then(function (json) {
     if (argv.nodelete) return;
+    console.log('delete files...');
 
     return Promise.all(json.files.map(function (item) {
+      console.log(`File ID: ${item.id}`);
+
       const fileDeleteAPIoptions = {
         method: 'POST',
         uri: 'https://slack.com/api/files.delete',
         form: {
           token: argv.token,
-          id: item.id
+          file: item.id
         },
         json: true
       };
 
       return requestPromise(fileDeleteAPIoptions)
         .then(function (json) {
+          console.log(json);
         })
         .catch(function (err) {
           console.error(err);
         })
-
     }));
   })
   .catch(function (err) {
